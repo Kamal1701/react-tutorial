@@ -1,8 +1,10 @@
 export function UserUsername(props) {
-    console.log(props.username);
+
     return (
         <div>
-            <b>Username: </b>
+            <b style={{
+                fontSize: '32px'
+            }}>Username: </b>
             <span>{props.username}</span>
         </div>
     );
