@@ -1,17 +1,18 @@
 import { createElement } from "react";
+import styles from './users.module.scss';
 
 export function UserFavouriteFoods() {
     return createElement(
-        'div',
+        'section',
         null,
-        <section>
-            <span>Favorite Foods:</span>
+        <div>
+            <span className={styles.foodsTitle}>Favorite Foods:</span>
             <br />
             <ul>
                 <li>Channa</li>
                 <li>Chappathi</li>
             </ul>
-        </section>);
+        </div>);
 }
 
 // Otherway to pass argument
