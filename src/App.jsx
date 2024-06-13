@@ -155,16 +155,20 @@ import { LoginForm } from "./components/LoginForm";
 //**************************** */
 //Event handling
 
-function App() {
-  window.addEventListener("resize", (e) => {
-    console.log(window.innerHeight, window.innerWidth);
-  });
+// function App() {
+//   window.addEventListener("resize", (e) => {
+//     console.log(window.innerHeight, window.innerWidth);
+//   });
 
-  return (
-    <div>
-      <LoginForm />
-    </div>
-  );
+//   return (
+//     <div>
+//       <LoginForm />
+//     </div>
+//   );
+// }
+
+function App() {
+  return <div></div>;
 }
 
 export default App;
