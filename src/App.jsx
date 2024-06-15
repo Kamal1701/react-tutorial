@@ -1,6 +1,8 @@
-import { UserProfile } from "./components/UserProfile";
+// import { UserProfile } from "./components/UserProfile";
 import { UserDetail } from "./components/UserDetail";
-import { LoginForm } from "./components/LoginForm";
+// import { LoginForm } from "./components/LoginForm";
+import { useState } from "react";
+// import { RegisterForm } from "./components/RegisterForm";
 
 // function App() {
 
@@ -167,8 +169,40 @@ import { LoginForm } from "./components/LoginForm";
 //   );
 // }
 
+/******************************************/
+// Learning about State
+// function App() {
+//   return (
+//     <div>
+//       <RegisterForm />
+//     </div>
+//   );
+// }
+
+/******************************************/
+// Learning about State and Array
 function App() {
-  return <div></div>;
+  const [users, setUsers] = useState([
+    {
+      id: 1,
+      username: "Kamal",
+      email: "kk17kannan@yahoo.com",
+    },
+    {
+      id: 2,
+      username: "Siddhu",
+      email: "kk17siddhu@gmail.com",
+    },
+  ]);
+
+  return (
+    <div>
+      {users.map((user) => (
+        // console.log(user);
+        <UserDetail key={user.id} user={user} setUsers={setUsers} />
+      ))}
+    </div>
+  );
 }
 
 export default App;
