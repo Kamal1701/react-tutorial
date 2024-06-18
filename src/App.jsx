@@ -1,7 +1,7 @@
 // import { UserProfile } from "./components/UserProfile";
 import { UserDetail } from "./components/UserDetail";
 // import { LoginForm } from "./components/LoginForm";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 // import { RegisterForm } from "./components/RegisterForm";
 
 // function App() {
@@ -181,65 +181,87 @@ import { useState } from "react";
 
 /******************************************/
 // Learning about State and Array
+// function App() {
+//   const [username, setUsername] = useState("");
+//   const [email, setEmail] = useState("");
+//   const [counter, setCounter] = useState(3);
+
+//   const [users, setUsers] = useState([
+//     {
+//       id: 1,
+//       username: "Kamal",
+//       email: "kk17kannan@yahoo.com",
+//     },
+//     {
+//       id: 2,
+//       username: "Siddhu",
+//       email: "kk17siddhu@gmail.com",
+//     },
+//   ]);
+
+//   return (
+//     <div>
+//       <form
+//         onSubmit={(e) => {
+//           e.preventDefault();
+//           const newUser = { id: counter, username, email };
+//           setCounter((currentCounter) => currentCounter + 1);
+//           setUsers((currentUser) => [...currentUser, newUser]);
+//           setUsername("");
+//           setEmail("");
+//         }}
+//       >
+//         <div>
+//           <label htmlFor="username">Username</label>
+//           <input
+//             id="username"
+//             name="username"
+//             value={username}
+//             onChange={(e) => {
+//               setUsername(e.target.value);
+//             }}
+//           />
+//         </div>
+//         <div>
+//           <label htmlFor="email">Email</label>
+//           <input
+//             id="email"
+//             name="email"
+//             value={email}
+//             onChange={(e) => {
+//               setEmail(e.target.value);
+//             }}
+//           />
+//         </div>
+//         <button>Add user</button>
+//       </form>
+//       <br />
+//       {users.map((user) => (
+//         // console.log(user);
+//         <UserDetail key={user.id} user={user} setUsers={setUsers} />
+//       ))}
+//     </div>
+//   );
+// }
+
+/***************************** */
+//Learing about Hooks
+
 function App() {
-  const [username, setUsername] = useState("");
-  const [email, setEmail] = useState("");
-  const [counter, setCounter] = useState(3);
+  const [counter, setCounter] = useState(0);
+  const [sync, setSync] = useState(false);
 
-  const [users, setUsers] = useState([
-    {
-      id: 1,
-      username: "Kamal",
-      email: "kk17kannan@yahoo.com",
-    },
-    {
-      id: 2,
-      username: "Siddhu",
-      email: "kk17siddhu@gmail.com",
-    },
-  ]);
-
+  useEffect(() => {
+    console.log("Rendering....");
+    document.title = "React Tutorial " + counter;
+  }, [sync]);
   return (
     <div>
-      <form
-        onSubmit={(e) => {
-          e.preventDefault();
-          const newUser = { id: counter, username, email };
-          setCounter((currentCounter) => currentCounter + 1);
-          setUsers((currentUser) => [...currentUser, newUser]);
-          setUsername("");
-          setEmail("");
-        }}
-      >
-        <div>
-          <label htmlFor="username">Username</label>
-          <input
-            id="username"
-            name="username"
-            value={username}
-            onChange={(e) => {
-              setUsername(e.target.value);
-            }}
-          />
-        </div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            name="email"
-            value={email}
-            onChange={(e) => {
-              setEmail(e.target.value);
-            }}
-          />
-        </div>
-        <button>Add user</button>
-        <br />
-      </form>
-      {users.map((user) => (
-        // console.log(user);
-        <UserDetail key={user.id} user={user} setUsers={setUsers} />
-      ))}
+      <div>You have clicked {counter} times</div>
+      <button onClick={() => setCounter((counter) => counter + 1)}>
+        Click Me
+      </button>
+      <button onClick={() => setSync((current) => !current)}>Sync</button>
     </div>
   );
 }
