@@ -255,6 +255,19 @@ function App() {
     console.log("Rendering....");
     document.title = "React Tutorial " + counter;
   }, [sync]);
+
+  useEffect(() => {
+    fetch("https://jsonplaceholder.typicode.com/users", {
+      method: "GET",
+    })
+      .then((response) => {
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+      });
+  });
+
   return (
     <div>
       <div>You have clicked {counter} times</div>
