@@ -4,12 +4,18 @@ export function LoginForm() {
     const resizeEventHandler = (e) => {
       console.log("Window Resized");
     };
+
+    const handleDocumentClick = (e) => {
+      console.log("Document clicked");
+    };
     window.addEventListener("resize", resizeEventHandler);
+    document.addEventListener("click", handleDocumentClick);
 
     return () => {
       console.log("Unmounting Login Form");
       console.log("Removing Event Listener");
       window.removeEventListener("resize", resizeEventHandler);
+      document.removeEventListener("click", handleDocumentClick);
     };
   }, []);
 
