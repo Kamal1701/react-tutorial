@@ -4,6 +4,9 @@ import { UserDetail } from "./components/UserDetail";
 // import { LoginForm } from "./components/LoginForm";
 import { useState, useEffect } from "react";
 // import { RegisterForm } from "./components/RegisterForm";
+import { UserContext } from "./utils/context/UserContext";
+import { PostContainer } from "./components/PostContainer";
+import { PostContentButtons } from "./components/PostContentButtons";
 
 // function App() {
 
@@ -377,20 +380,41 @@ import { useState, useEffect } from "react";
 //   );
 // }
 
-//Add Event Listener
+//Add Event Listener and custom hooks
+// function App() {
+//   const [toggle, setToggle] = useState(false);
+//   return (
+//     <div>
+//       <button
+//         onClick={() => {
+//           setToggle((currentToggle) => !currentToggle);
+//         }}
+//       >
+//         toggle
+//       </button>
+//       {toggle && <LoginForm />}
+//     </div>
+//   );
+// }
+
+/*Context API */
+//Passing data from parent to child component skipping siblings
+//accesing data from any components
 function App() {
-  const [toggle, setToggle] = useState(false);
+  const [userData, setUserData] = useState({
+    id: 1,
+    username: "kamal",
+    email: "kk17kannan@yahoo.com",
+    displayname: "Kamalakannan",
+  });
   return (
-    <div>
-      <button
-        onClick={() => {
-          setToggle((currentToggle) => !currentToggle);
-        }}
-      >
-        toggle
-      </button>
-      {toggle && <LoginForm />}
-    </div>
+    <>
+      <UserContext.Provider value={{ ...userData, setUserData }}>
+        <div>
+          <PostContainer />
+        </div>
+      </UserContext.Provider>
+    </>
   );
 }
 

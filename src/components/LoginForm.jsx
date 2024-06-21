@@ -1,21 +1,22 @@
 import { useEffect } from "react";
+import { useDocumentClick } from "../utils/hooks/useDocumentClick";
 export function LoginForm() {
   useEffect(() => {
     const resizeEventHandler = (e) => {
       console.log("Window Resized");
     };
 
-    const handleDocumentClick = (e) => {
-      console.log("Document clicked");
-    };
+    // const handleDocumentClick = (e) => {
+    //   console.log("Document clicked");
+    // };
     window.addEventListener("resize", resizeEventHandler);
-    document.addEventListener("click", handleDocumentClick);
-
+    // document.addEventListener("click", handleDocumentClick);
+    useDocumentClick();
     return () => {
       console.log("Unmounting Login Form");
       console.log("Removing Event Listener");
       window.removeEventListener("resize", resizeEventHandler);
-      document.removeEventListener("click", handleDocumentClick);
+      // document.removeEventListener("click", handleDocumentClick);
     };
   }, []);
 
