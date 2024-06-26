@@ -10,13 +10,14 @@ export function PostContentButtons() {
       <div>
         <span>Post Content Buttons</span>
       </div>
-      {id}
+      <div>{id}</div>
+
       <br />
       <button
         onClick={() => {
           setUserData((currentState) => ({
             ...currentState,
-            displayname: "updated display name",
+            name: "updated display name",
           }));
         }}
       >

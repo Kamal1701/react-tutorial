@@ -3,15 +3,14 @@ import { PostContentButtons } from "./PostContentButtons";
 import { UserContext } from "../utils/context/UserContext";
 
 export function PostContent() {
-  const UserContextData = useContext(UserContext);
+  const userContextData = useContext(UserContext);
   return (
     <div>
       <div>
         <span>Post Content</span>
       </div>
       <PostContentButtons />
-      {UserContextData.email}
-      {}
+      {userContextData.email}
     </div>
   );
 }

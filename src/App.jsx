@@ -7,6 +7,7 @@ import { useState, useEffect } from "react";
 import { UserContext } from "./utils/context/UserContext";
 import { PostContainer } from "./components/PostContainer";
 import { PostContentButtons } from "./components/PostContentButtons";
+import { useFetchUser } from "./utils/hooks/useFetchUser";
 
 // function App() {
 
@@ -401,18 +402,17 @@ import { PostContentButtons } from "./components/PostContentButtons";
 //Passing data from parent to child component skipping siblings
 //accesing data from any components
 function App() {
-  const [userData, setUserData] = useState({
-    id: 1,
-    username: "kamal",
-    email: "kk17kannan@yahoo.com",
-    displayname: "Kamalakannan",
-  });
+  const { user, loading, error } = useFetchUser(2);
+  const [userData, setUserData] = useState();
+
+  useEffect(() => {
+    if (!loading && !error && user) setUserData(user);
+  }, [loading, error, user]);
+
   return (
     <>
       <UserContext.Provider value={{ ...userData, setUserData }}>
-        <div>
-          <PostContainer />
-        </div>
+        <div>{loading ? "Loading..." : <PostContainer />}</div>
       </UserContext.Provider>
     </>
   );
