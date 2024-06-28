@@ -1,13 +1,14 @@
-// import { UserProfile } from "./components/UserProfile";
-import { LoginForm } from "./components/LoginForm";
-import { UserDetail } from "./components/UserDetail";
+// // import { UserProfile } from "./components/UserProfile";
+// import { LoginForm } from "./components/LoginForm";
+// import { UserDetail } from "./components/UserDetail";
 // import { LoginForm } from "./components/LoginForm";
 import { useState, useEffect } from "react";
 // import { RegisterForm } from "./components/RegisterForm";
 import { UserContext } from "./utils/context/UserContext";
 import { PostContainer } from "./components/PostContainer";
-import { PostContentButtons } from "./components/PostContentButtons";
+// import { PostContentButtons } from "./components/PostContentButtons";
 import { useFetchUser } from "./utils/hooks/useFetchUser";
+import { Link, Outlet } from "react-router-dom";
 
 // function App() {
 
@@ -403,18 +404,37 @@ import { useFetchUser } from "./utils/hooks/useFetchUser";
 //accesing data from any components
 function App() {
   const { user, loading, error } = useFetchUser(2);
-  const [userData, setUserData] = useState();
+  const [userData, setUserData] = useState({});
 
   useEffect(() => {
-    if (!loading && !error && user) setUserData(user);
+    if (!loading && !error && user) {
+      setUserData(user);
+    }
   }, [loading, error, user]);
 
   return (
-    <>
+    <div>
+      <nav>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+            {/* <a href="/">Home</a> */}
+          </li>
+          <li>
+            <Link to="/users">Users</Link>
+            {/* <a href="/users">Users</a> */}
+          </li>
+          <li>
+            <Link to="/blog-post">Blogs</Link>
+            {/* <a href="/blog-post">Blogs</a> */}
+          </li>
+        </ul>
+      </nav>
       <UserContext.Provider value={{ ...userData, setUserData }}>
         <div>{loading ? "Loading..." : <PostContainer />}</div>
       </UserContext.Provider>
-    </>
+      <Outlet />
+    </div>
   );
 }
 

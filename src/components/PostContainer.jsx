@@ -4,7 +4,7 @@ import { UserContext } from "../utils/context/UserContext";
 
 export function PostContainer() {
   const userContextData = useContext(UserContext);
-  console.log(userContextData.email);
+  // console.log(userContextData.email);
 
   return (
     <div>

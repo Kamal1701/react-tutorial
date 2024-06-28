@@ -18,7 +18,7 @@ export function useFetchUser(userId) {
              }
             )
             .catch((err) => {
-                console.log(err);
+                // console.log(err);
                 setError(err);
             }).finally(() => { setLoading(false); });
         
